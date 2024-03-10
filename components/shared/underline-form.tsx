@@ -3,8 +3,21 @@
 import React, { useState } from 'react';
 
 export default function UnderlineForm() {
+    interface ApiResponse {
+        word: string;
+        phonetic: string;
+        meanings: {
+            partOfSpeech: string;
+            definitions: {
+                definition: string;
+                synonyms: string[];
+                antonyms: string[];
+            }[];
+        }[];
+    }
+
     const [wordInput, setWordInput] = useState('');
-    const [data, setData] = useState(null);
+    const [data, setData] = useState<ApiResponse | null>(null);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setWordInput(event.target.value);
@@ -45,7 +58,7 @@ export default function UnderlineForm() {
 
             {data && (
                 <div>
-                    <h2>{data.word}</h2>
+                    <h2>{data? data.word: "Loading..."}</h2>
                     <p>Phonetic: {data.phonetic}</p>
                     <h3>Meanings:</h3>
                     {data.meanings.map((meaning, index) => (
