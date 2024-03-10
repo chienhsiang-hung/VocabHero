@@ -6,13 +6,13 @@ export default function UnderlineForm() {
     const [wordInput, setWordInput] = useState('');
     const [data, setData] = useState(null);
 
-    const handleInputChange = (event) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setWordInput(event.target.value);
     };
     const handleFetch = () => {
         dictionaryapi(wordInput);
     };
-    const dictionaryapi = async (word) => {
+    const dictionaryapi = async (word: string) => {
         try {
           const response = await fetch( 'https://api.dictionaryapi.dev/api/v2/entries/en/' + word );
           const jsonData = await response.json();
