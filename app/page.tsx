@@ -5,6 +5,7 @@ import WebVitals from "@/components/home/web-vitals";
 import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
+import UnderlineForm from "@/components/shared/underline-form";
 
 export default async function Home() {
   const { stargazers_count: stars } = await fetch(
@@ -91,7 +92,7 @@ export default async function Home() {
         </div>
       </div>
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {features.map(({ title, description, demo, large }) => (
+        {features.map(({ title, description, demo, large, super_large }) => (
           <Card
             key={title}
             title={title}
@@ -104,6 +105,7 @@ export default async function Home() {
               )
             }
             large={large}
+            super_large={super_large}
           />
         ))}
       </div>
@@ -112,6 +114,13 @@ export default async function Home() {
 }
 
 const features = [
+  {
+    title: "Test",
+    description:
+      "Pre-built beautiful, a11y-first components, powered by [Tailwind CSS](https://tailwindcss.com/), [Radix UI](https://www.radix-ui.com/), and [Framer Motion](https://framer.com/motion)",
+    super_large: true,
+    demo: <UnderlineForm />,
+  },
   {
     title: "Beautiful, reusable components",
     description:
