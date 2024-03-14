@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import PexelsSearch from './pexels-search';
 
 export default function UnderlineForm() {
     interface ApiResponse {
@@ -26,6 +28,10 @@ export default function UnderlineForm() {
           console.error('Error fetching data:', error);
         }
     };
+
+    const test = () => {
+        PexelsSearch('apple')
+    }
   return (
     <form className="w-full max-w-sm">
         <div className="flex items-center border-b border-teal-500 py-2">
@@ -39,7 +45,7 @@ export default function UnderlineForm() {
             <button
                 className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                 type="button"
-                onClick={()=>{}}
+                onClick={test}
             >
                 Add
             </button>
