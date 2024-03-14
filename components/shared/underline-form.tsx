@@ -1,6 +1,5 @@
 "use client";
 
-import PexelsSearch from '@/app/api/pexels-search';
 import React, { useState, useEffect } from 'react';
 
 export default function UnderlineForm() {
@@ -28,9 +27,15 @@ export default function UnderlineForm() {
         }
     };
 
-    const test = () => {
-        PexelsSearch('apple')
-    }
+    const test = async () => {
+        try {
+          const response = await fetch('/api/pexels-search');
+          const jsonData = await response.json();
+          setData(jsonData[0]);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+    };
   return (
     <form className="w-full max-w-sm">
         <div className="flex items-center border-b border-teal-500 py-2">
