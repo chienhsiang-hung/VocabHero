@@ -1,16 +1,23 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { createClient, ErrorResponse, Photo, PhotosWithTotalResults } from 'pexels';
 
 interface SearchResult {
     photos: Photo[];
 }
 
-export async function pexelsSearch(req: NextApiRequest, res: NextApiResponse) {
+type ResponseData = {
+    data: SearchResult | ErrorResponse;
+}
+
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse<ResponseData>
+) {
     console.log(process.env.NEXTAUTH_URL);
     
     // Check if PEXELS_API_KEY is defined
     if (!process.env.PEXELS_API_KEY) {
-        return res.status(500).json({ error: 'PEXELS_API_KEY is not defined' });
+        return res.status(500).json({ data: { error: 'PEXELS_API_KEY is not defined' } });
     } else {
         console.log('API Logged In Successfully!');
     }
@@ -25,14 +32,14 @@ export async function pexelsSearch(req: NextApiRequest, res: NextApiResponse) {
         if ('photos' in response) {
             // Success case
             const data: SearchResult = { photos: response.photos };
-            return res.status(200).json(data);
+            return res.status(200).json({ data });
         } else {
             // Error case
-            return res.status(500).json({ error: getErrorMessage(response) });
+            return res.status(500).json({ data: { error: getErrorMessage(response) } });
         }
     } catch (error) {
         console.error('Error searching photos:', error);
-        return res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).json({ data: { error: 'Internal server error' } });
     }
 }
 

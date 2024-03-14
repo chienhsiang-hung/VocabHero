@@ -40,14 +40,46 @@ You can also clone & create this repo locally with the following command:
 npx create-next-app precedent --example "https://github.com/steven-tey/precedent"
 ```
 
-Then, install the dependencies with your package manager of choice:
+1. Then, install the dependencies with your package manager of choice:
 
-```bash
-npm i
-yarn
-pnpm i
-```
+    ```bash
+    npm i
+    yarn
+    pnpm i
+    ```
+2. If you got `'prisma' is not recognized as an internal or external command`, try `npm install @prisma/cli`.
+3. If you got:
+    ```bash
+    npm ERR! code ERESOLVE
+    npm ERR! ERESOLVE unable to resolve dependency tree
+    npm ERR!
+    npm ERR! While resolving: precedent@0.1.0
+    npm ERR! Found: next@13.5.5-canary.19
+    npm ERR! node_modules/next
+    npm ERR!   next@"13.5.5-canary.19" from the root project
+    npm ERR! 
+    npm ERR! Could not resolve dependency:
+    npm ERR! peer next@"^12.2.5 || ^13" from next-auth@4.22.1
+    npm ERR! node_modules/next-auth
+    npm ERR!   next-auth@"4.22.1" from the root project
+    npm ERR!   peer next-auth@"^4" from @next-auth/prisma-adapter@1.0.7
+    npm ERR!   node_modules/@next-auth/prisma-adapter
+    npm ERR!     @next-auth/prisma-adapter@"^1.0.7" from the root project
+    npm ERR!
+    npm ERR! Fix the upstream dependency conflict, or retry
+    npm ERR! this command with --force, or --legacy-peer-deps
+    npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+    ```
+    Try this to solve it: `npx prisma` then `npx prisma generate`. Check out here to see more related to this [issue](https://github.com/prisma/prisma/discussions/4978).
+4. Last, if you got:
+    ```bash
+    pnpm: The term 'pnpm' is not recognized as a name of a cmdlet, function, script file, or executable program.
+    ```
+    You need to install `pnpm` by `npm install -g pnpm` and run `npx prisma generate` again.
+5. Now you can finally run `npm run dev` to start!
 
+### Note
+If you need to add/install new package, use `pnpm install <THEPACKAGE>`/`pnpm add <THEPACKAGE>`/`pnpm i <THEPACKAGE>` instead.
 ## Tech Stack + Features
 
 https://user-images.githubusercontent.com/28986134/212368288-12f41e37-aa8c-4e0a-a542-cf6d23410a65.mp4
