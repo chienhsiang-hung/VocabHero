@@ -5,6 +5,7 @@ interface SearchResult {
 }
 
 export default async function PexelsSearch(query: string): Promise<SearchResult> {
+    console.log(process.env.NEXTAUTH_URL)
     // Check if PEXELS_API_KEY is defined
     if (!process.env.PEXELS_API_KEY) {
       throw new Error('PEXELS_API_KEY is not defined');

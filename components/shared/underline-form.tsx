@@ -1,8 +1,7 @@
 "use client";
 
+import PexelsSearch from '@/app/api/pexels-search';
 import React, { useState, useEffect } from 'react';
-
-import PexelsSearch from './pexels-search';
 
 export default function UnderlineForm() {
     interface ApiResponse {
