@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { dictionaryApi } from '../fetch/dictionary-api';
+
 
 export default function UnderlineForm() {
     interface ApiResponse {
@@ -18,13 +19,16 @@ export default function UnderlineForm() {
     }
 
     const [searched_word, setSearched_word] = useState('');
-    const [data, setData] = useState<ApiResponse | null>(null);
+    const [data, setData] = useState<string | null>(null);
     
     const handleSearchWord = async(event: React.ChangeEvent<HTMLInputElement>) => {
         setSearched_word(event.target.value);
-        
-        const data = await dictionaryApi(event);
-        setData(data);
+
+        const data_tmp = await dictionaryApi(event);
+        if (data_tmp !== undefined) {
+            setData(data_tmp)
+        };
+        console.log(data);
     }
 
     const pexels = async () => {
@@ -63,8 +67,22 @@ export default function UnderlineForm() {
                 Add
             </button>
         </div>
-
+        
+        <textarea
+            id = "message"
+            className = "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder = "Write your thoughts here..."
+        >{data && ({data})}</textarea>
         {data && (
+        <textarea
+        id = "message"
+        className = "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder = "Write your thoughts here..."
+    >{data}</textarea>
+
+        )}
+
+        {/* {data && (
             <div>
                 <h2>{data? data.word: "Loading..."}</h2>
                 <p>Phonetic: {data.phonetic}</p>
@@ -82,7 +100,7 @@ export default function UnderlineForm() {
                     </div>
                 ))}
             </div>
-        )}
+        )} */}
 
     </form>
   );
