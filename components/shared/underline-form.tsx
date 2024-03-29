@@ -18,6 +18,7 @@ export default function UnderlineForm() {
 
     const [searched_word, setSearched_word] = useState('');
     const [data, setData] = useState<ApiResponse | null>(null);
+    
     const dictionaryapi = async (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearched_word(event.target.value);
 
