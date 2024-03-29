@@ -121,9 +121,12 @@ https://user-images.githubusercontent.com/28986134/212368288-12f41e37-aa8c-4e0a-
 - [ESLint](https://eslint.org/) – Pluggable linter for Next.js and TypeScript
 
 ### Miscellaneous
-
 - [Vercel Analytics](https://vercel.com/analytics) – Track unique visitors, pageviews, and more in a privacy-friendly way
 
-## Author
+### Resources
+- [Dictionary API](https://dictionaryapi.dev/) – Get word definitions
+- [Image and Video API](https://www.pexels.com/api/documentation/) – Access to the full Pexels content library, including photos, videos
 
+## Author
 - Steven Tey ([@steventey](https://twitter.com/steventey))
+- Hsiang (@...)
