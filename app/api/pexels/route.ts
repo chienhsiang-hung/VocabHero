@@ -1,9 +1,10 @@
 import { createClient } from 'pexels';
 
 export async function GET(request: Request) {
+    const { searchParams } = new URL(request.url);
+    const query = searchParams.get('word') || '';
 
     const client = createClient(process.env.PEXELS_API_KEY!);
-    const query = 'Nature';
     const photos_object = await client.photos.search({query, per_page: 1});
     const photos_json = await JSON.parse(JSON.stringify(photos_object));
 
