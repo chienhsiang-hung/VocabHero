@@ -97,7 +97,7 @@ export default async function Home() {
         <div
           className="relative col-span-1 h-96 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md md:col-span-3"
         >
-          <div className="flex h-60 items-center justify-center"><UnderlineForm /></div>
+          <div className="flex h-60 items-start justify-center mt-2"><UnderlineForm /></div>
           {/* <div className="mx-auto max-w-md text-center">
             <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-xl font-bold text-transparent [text-wrap:balance] md:text-3xl md:font-normal">
               {title}
