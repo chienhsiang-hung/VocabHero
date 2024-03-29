@@ -25,6 +25,7 @@ export default function UnderlineForm() {
         try {
           const response = await fetch( 'https://api.dictionaryapi.dev/api/v2/entries/en/' + event.target.value );
           const jsonData = await response.json();
+          console.log(jsonData);
           setData(jsonData[0]);
         } catch (error) {
           console.error('Error fetching data:', error);
