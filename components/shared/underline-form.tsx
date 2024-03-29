@@ -29,7 +29,7 @@ export default function UnderlineForm() {
 
     const test = async () => {
         try {
-          const response = await fetch('/api/pexels-search');
+          const response = await fetch('/api/test3');
           const jsonData = await response.json();
           setData(jsonData[0]);
         } catch (error) {
