@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { dictionaryApi } from '../fetch/dictionary-api';
 
 export default function UnderlineForm() {
     interface ApiResponse {
@@ -19,18 +20,12 @@ export default function UnderlineForm() {
     const [searched_word, setSearched_word] = useState('');
     const [data, setData] = useState<ApiResponse | null>(null);
     
-    const dictionaryapi = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSearchWord = async(event: React.ChangeEvent<HTMLInputElement>) => {
         setSearched_word(event.target.value);
-
-        try {
-          const response = await fetch( 'https://api.dictionaryapi.dev/api/v2/entries/en/' + event.target.value );
-          const jsonData = await response.json();
-          console.log(jsonData);
-          setData(jsonData[0]);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        };
-    };
+        
+        const data = await dictionaryApi(event);
+        setData(data);
+    }
 
     const pexels = async () => {
         try {
@@ -51,7 +46,7 @@ export default function UnderlineForm() {
                 type="text"
                 placeholder="Jane Doe"
                 aria-label="Full name"
-                onChange={dictionaryapi}
+                onChange={handleSearchWord}
             />
             <button
                 className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded mx-1"

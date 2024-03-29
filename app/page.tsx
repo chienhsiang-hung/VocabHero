@@ -5,7 +5,7 @@ import WebVitals from "@/components/home/web-vitals";
 import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
-import UnderlineForm from "@/components/shared/underline-form";
+import UnderlineForm from "@/components/home/underline-form";
 
 export default async function Home() {
   const { stargazers_count: stars } = await fetch(
