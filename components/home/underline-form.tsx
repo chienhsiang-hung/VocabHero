@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { dictionaryApi } from '../fetch/dictionary-api';
 
 
-
 export default function UnderlineForm() {
     interface ApiResponse {
         word: string;
@@ -45,7 +44,7 @@ export default function UnderlineForm() {
     };
 
     function add() {
-        console.log( sessionStorage );
+        console.log( document.cookie );
     };
   return (
     <form className="w-full max-w-lg">
