@@ -1,6 +1,3 @@
-import { JsonValue } from "@prisma/client/runtime/library";
-import { json } from "stream/consumers";
-
 export const dictionaryApi = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
         const response = await fetch( 'https://api.dictionaryapi.dev/api/v2/entries/en/' + event.target.value );

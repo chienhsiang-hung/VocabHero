@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { dictionaryApi } from '../fetch/dictionary-api';
 
 
+
 export default function UnderlineForm() {
     interface ApiResponse {
         word: string;
@@ -42,6 +43,10 @@ export default function UnderlineForm() {
           console.error('Error fetching data:', error);
         }
     };
+
+    function add() {
+        console.log( sessionStorage );
+    };
   return (
     <form className="w-full max-w-lg">
         <div className="flex items-center border-b border-teal-500 m-2">
@@ -62,7 +67,7 @@ export default function UnderlineForm() {
             <button
                 className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                 type="button"
-                onClick={pexels}
+                onClick={add}
             >
                 Add
             </button>
