@@ -10,10 +10,11 @@ export const dictionaryApi = async (event: React.ChangeEvent<HTMLInputElement>) 
         let text_area = '';
         meanings.forEach(function(meaning: { partOfSpeech: any; definitions: any;}) {
             if ("example" in meaning.definitions[0]) {
-                text_area += `(${meaning.partOfSpeech}) ${meaning.definitions[0].definition}: ${meaning.definitions[0].example}&#10;&#13;`
+                text_area += `(${meaning.partOfSpeech}) ${meaning.definitions[0].definition}: ${meaning.definitions[0].example} `
             } else {
-                text_area += `(${meaning.partOfSpeech}) ${meaning.definitions[0].definition}&#10;&#13;`
+                text_area += `(${meaning.partOfSpeech}) ${meaning.definitions[0].definition} `
             };
+            // I was trying to use &#10;&#13; to change a new line but failed
         });
 
         console.log(text_area);
