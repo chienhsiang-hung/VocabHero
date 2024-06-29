@@ -20,6 +20,7 @@ export default function UnderlineForm() {
 
     const [searched_word, setSearched_word] = useState('');
     const [data, setData] = useState<string | null>(null);
+    const [imgUrl, setimgUrl] = useState('');
     const [showImg, setImg] = useState(false);
     
     const handleSearchWord = async(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +28,7 @@ export default function UnderlineForm() {
 
         const data_tmp = await dictionaryApi(event);
         if (data_tmp !== undefined) {
-            setData(data_tmp)
+            setData(data_tmp);
         };
         console.log(data);
     }
@@ -40,8 +41,10 @@ export default function UnderlineForm() {
           const response = await fetch(
             '/api/pexels?' + new URLSearchParams({word: searched_word})
           );
-          const jsonData = await response.json();
-          setData(jsonData[0]);
+          const imgUrl_tmp = await response.text();
+          console.log("imgUrl="+imgUrl_tmp);
+          setimgUrl(imgUrl_tmp);
+          setImg(true);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -85,7 +88,7 @@ export default function UnderlineForm() {
         {showImg && (
             <img
                 className="h-auto max-w-lg rounded-lg"
-                src="/docs/images/examples/image-1@2x.jpg"
+                src={imgUrl}
                 alt="image for the word"
             />
         )}
