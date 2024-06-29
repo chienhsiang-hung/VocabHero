@@ -85,13 +85,15 @@ export default function UnderlineForm() {
             value = {data||undefined}
             onChange = {handleChange}
         />
-        {showImg && (
-            <img
-                className="h-auto max-w-lg rounded-lg"
-                src={imgUrl}
-                alt="image for the word"
-            />
-        )}
+        <div className="flex justify-center m-2">
+            {showImg && (
+                <img
+                    className="h-auto max-w-lg rounded-lg"
+                    src={imgUrl}
+                    alt="image for the word"
+                />
+            )}
+        </div>
 
 
         {/* {data && (
