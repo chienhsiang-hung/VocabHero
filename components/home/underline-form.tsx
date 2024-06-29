@@ -50,7 +50,7 @@ export default function UnderlineForm() {
         console.log( document.cookie );
     };
   return (
-    <form className="w-full max-w-lg">
+    <form className="w-full max-w-lg m-2">
         <div className="flex items-center border-b border-teal-500 m-2">
             <input
                 className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
@@ -77,8 +77,8 @@ export default function UnderlineForm() {
         
         <textarea
             id = "message"
-            className = "block p-2.5 w-full text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-            placeholder = "Write your thoughts here..."
+            className = "block p-2.5 text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 w-full"
+            placeholder = "The defination will be displayed here."
             value = {data||undefined}
             onChange = {handleChange}
         />
