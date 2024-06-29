@@ -30,6 +30,9 @@ export default function UnderlineForm() {
         };
         console.log(data);
     }
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setData(event.target.value);
+    };
 
     const pexels = async () => {
         try {
@@ -77,6 +80,7 @@ export default function UnderlineForm() {
             className = "block p-2.5 w-full text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
             placeholder = "Write your thoughts here..."
             value = {data||undefined}
+            onChange = {handleChange}
         />
 
 
