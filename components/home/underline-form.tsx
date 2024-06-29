@@ -20,6 +20,7 @@ export default function UnderlineForm() {
 
     const [searched_word, setSearched_word] = useState('');
     const [data, setData] = useState<string | null>(null);
+    const [showImg, setImg] = useState(false);
     
     const handleSearchWord = async(event: React.ChangeEvent<HTMLInputElement>) => {
         setSearched_word(event.target.value);
@@ -74,14 +75,20 @@ export default function UnderlineForm() {
                 Add
             </button>
         </div>
-        
         <textarea
             id = "message"
-            className = "block p-2.5 text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 w-full"
+            className = "block p-2.5 text-sm rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 w-full h-48"
             placeholder = "The defination will be displayed here."
             value = {data||undefined}
             onChange = {handleChange}
         />
+        {showImg && (
+            <img
+                className="h-auto max-w-lg rounded-lg"
+                src="/docs/images/examples/image-1@2x.jpg"
+                alt="image for the word"
+            />
+        )}
 
 
         {/* {data && (
