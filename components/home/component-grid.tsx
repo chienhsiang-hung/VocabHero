@@ -7,7 +7,10 @@ import Tooltip from "@/components/shared/tooltip";
 import { ChevronDown } from "lucide-react";
 
 export default function ComponentGrid() {
-  const { DemoModal, setShowDemoModal } = useDemoModal();
+  const { DemoModal, setShowDemoModal } = useDemoModal({
+    title: "Precedent",
+    description: "Precedent is an opinionated collection of components, hooks, and utilities for your Next.js project."
+  });
   const [openPopover, setOpenPopover] = useState(false);
   return (
     <div className="grid grid-cols-1 gap-5 md:grid-cols-3">

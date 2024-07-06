@@ -11,9 +11,13 @@ import Image from "next/image";
 const DemoModal = ({
   showDemoModal,
   setShowDemoModal,
+  title,
+  description,
 }: {
   showDemoModal: boolean;
   setShowDemoModal: Dispatch<SetStateAction<boolean>>;
+  title: string;
+  description: string;
 }) => {
   return (
     <Modal showModal={showDemoModal} setShowModal={setShowDemoModal}>
@@ -28,18 +32,20 @@ const DemoModal = ({
               height={20}
             />
           </a>
-          <h3 className="font-display text-2xl font-bold">Precedent</h3>
-          <p className="text-sm text-gray-500">
-            Precedent is an opinionated collection of components, hooks, and
-            utilities for your Next.js project.
-          </p>
+          <h3 className="font-display text-2xl font-bold">{title}</h3>
+          <p className="text-sm text-gray-500">{description}</p>
         </div>
       </div>
     </Modal>
   );
 };
 
-export function useDemoModal() {
+export function useDemoModal(
+  {title, description}:{
+    title: string;
+    description: string;
+  }
+) {
   const [showDemoModal, setShowDemoModal] = useState(false);
 
   const DemoModalCallback = useCallback(() => {
@@ -47,9 +53,11 @@ export function useDemoModal() {
       <DemoModal
         showDemoModal={showDemoModal}
         setShowDemoModal={setShowDemoModal}
+        title={title}
+        description={description}
       />
     );
-  }, [showDemoModal, setShowDemoModal]);
+  }, [showDemoModal, setShowDemoModal, title, description]);
 
   return useMemo(
     () => ({ setShowDemoModal, DemoModal: DemoModalCallback }),

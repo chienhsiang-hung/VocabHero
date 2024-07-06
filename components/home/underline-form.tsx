@@ -51,7 +51,10 @@ export default function UnderlineForm() {
         }
     };
 
-    const {DemoModal, setShowDemoModal} = useDemoModal();
+    const {DemoModal, setShowDemoModal} = useDemoModal({
+        title: "Sign In Required",
+        description: "Please click the top right button to sign in to use the full utility of this app."
+    });
     const {data: session} = useSession();
     function add() {
         console.log( session?.user?.email );
