@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import { dictionaryApi } from '../fetch/dictionary-api';
-// import { useSession } from 'next-auth/react';
-
+import { useSession } from 'next-auth/react';
 
 export default function UnderlineForm() {
     interface ApiResponse {
@@ -51,10 +50,10 @@ export default function UnderlineForm() {
         }
     };
 
-    // const {data: session, status} = useSession();
+    const {data: session} = useSession();
     function add() {
         console.log( document.cookie );
-        // console.log( session?.user?.email );
+        console.log( session?.user?.email );
     };
   return (
     <form className="w-full max-w-lg m-2">

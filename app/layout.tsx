@@ -5,7 +5,7 @@ import { sfPro, inter } from "./fonts";
 import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
-// import { SessionProvider } from "next-auth/react";
+import SessionProvider from "@/components/shared/Provider";
 
 export const metadata = {
   title: "Precedent - Building blocks for your Next.js project",
@@ -15,16 +15,16 @@ export const metadata = {
   themeColor: "#FFF",
 };
 
-export default async function RootLayout({
-  children, session
-}: {
-  children: React.ReactNode;
-  session?: any; // Define the type of session if required
-}) {
+export default async function RootLayout(
+  {children, session}: {
+    children: React.ReactNode;
+    session: any; // Ensure session type is defined
+  }
+) {
   return (
-    // <SessionProvider session={session}>
-      <html lang="en">
-        <body className={cx(sfPro.variable, inter.variable)}>
+    <html lang="en">
+      <body className={cx(sfPro.variable, inter.variable)}>
+        <SessionProvider session={session}>
           <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />
           <Suspense fallback="...">
             <Nav />
@@ -34,8 +34,8 @@ export default async function RootLayout({
           </main>
           <Footer />
           <Analytics />
-        </body>
-      </html>
-    // </SessionProvider>
+        </SessionProvider>
+      </body>
+    </html>
   );
 }
