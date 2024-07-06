@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { dictionaryApi } from '../fetch/dictionary-api';
 import { useSession } from 'next-auth/react';
+import { useDemoModal } from './demo-modal';
 
 export default function UnderlineForm() {
     interface ApiResponse {
@@ -50,14 +51,18 @@ export default function UnderlineForm() {
         }
     };
 
+    const {DemoModal, setShowDemoModal} = useDemoModal();
     const {data: session} = useSession();
     function add() {
-        console.log( document.cookie );
         console.log( session?.user?.email );
+        if (session?.user?.email == undefined) {
+            setShowDemoModal(true);
+        };
     };
   return (
     <form className="w-full max-w-lg m-2">
         <div className="flex items-center border-b border-teal-500 m-2">
+            <DemoModal />
             <input
                 className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                 type="text"
