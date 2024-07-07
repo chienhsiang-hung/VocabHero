@@ -1,4 +1,4 @@
-import add from "./add";
+import {add} from "./add";
 
 export async function GET(
     request: Request,

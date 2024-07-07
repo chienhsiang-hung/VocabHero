@@ -60,7 +60,9 @@ export default function UnderlineForm() {
         console.log( session?.user?.email );
         if (session?.user?.email == undefined) {
             setShowDemoModal(true);
-        };
+        } else {
+            fetch('/api/vocabularies/a');
+        }
     };
   return (
     <form className="w-full max-w-lg m-2">

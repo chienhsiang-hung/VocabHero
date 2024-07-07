@@ -1,6 +1,6 @@
 import { sql } from "@vercel/postgres";
 
-export default async function add() {
+export async function add() {
     await sql`
     INSERT INTO vocabularies
     SELECT "userId", 'apple', 'http...', FALSE, 'meaning'
