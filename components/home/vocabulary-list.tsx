@@ -7,6 +7,7 @@ export default function VocabularyList() {
     if (!session?.user?.email) {
         return;
     };
+    fetch('/api/vocabularies/b');
     return (
         <>
         {/* Vacabulary block */}

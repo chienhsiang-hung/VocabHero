@@ -9,4 +9,10 @@ export async function add() {
     `;
 
     console.log('ok');
+};
+export async function listALL() {
+    const {rows} = await sql`
+    SELECT * FROM vacabularies WHERE email=abcdefg2981@gmail.com;
+    `
+    console.log(rows);
 }
