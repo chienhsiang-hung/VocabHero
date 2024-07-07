@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { dictionaryApi } from '../fetch/dictionary-api';
 import { useSession } from 'next-auth/react';
 import { useDemoModal } from './demo-modal';
+import { HiMiniSpeakerWave } from "react-icons/hi2";
 
 export default function UnderlineForm() {
     interface ApiResponse {
@@ -21,6 +22,7 @@ export default function UnderlineForm() {
 
     const [searched_word, setSearched_word] = useState('');
     const [data, setData] = useState<string | null>(null);
+    const [word_audio, setWord_audio] = useState('');
     
     const handleSearchWord = async(event: React.ChangeEvent<HTMLInputElement>) => {
         setSearched_word(event.target.value);
@@ -28,12 +30,17 @@ export default function UnderlineForm() {
         const data_tmp = await dictionaryApi(event);
         if (data_tmp !== undefined) {
             setData(data_tmp.text_area);
+            setWord_audio(data_tmp.audio);
         };
         console.log(data, data_tmp?.audio);
     }
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setData(event.target.value);
     };
+    const playAudio = () => {
+        let audio_to_play = new Audio(word_audio);
+        audio_to_play.play();
+    }
 
     const [imgUrl, setimgUrl] = useState('');
     const [showImg, setImg] = useState(false);
@@ -83,12 +90,15 @@ export default function UnderlineForm() {
                 Image
             </button>
             <button
-                className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded ml-1 mr-2.5"
                 type="button"
                 onClick={add}
             >
                 Add
             </button>
+            <div style={{'cursor': 'pointer'}}>
+                <HiMiniSpeakerWave className='text-teal-500' size={30} onClick={playAudio} />
+            </div>
         </div>
         <textarea
             id = "message"
