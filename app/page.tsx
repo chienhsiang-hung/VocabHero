@@ -6,6 +6,7 @@ import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
 import UnderlineForm from "@/components/home/underline-form";
+import VocabularyList from "@/components/home/vocabulary-list";
 
 export default async function Home() {
   const { stargazers_count: stars } = await fetch(
@@ -91,44 +92,17 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* new block */}
+      {/* UnderlineForm block */}
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
         {/* card level */}
         <div
           className="relative col-span-1 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md md:col-span-3"
         >
           <div className="flex items-start justify-center mt-2"><UnderlineForm /></div>
-          {/* <div className="mx-auto max-w-md text-center">
-            <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-xl font-bold text-transparent [text-wrap:balance] md:text-3xl md:font-normal">
-              {title}
-            </h2>
-            <div className="prose-sm mt-3 leading-normal text-gray-500 [text-wrap:balance] md:prose">
-              <ReactMarkdown
-                components={{
-                  a: ({ node, ...props }) => (
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      {...props}
-                      className="font-medium text-gray-800 underline transition-colors"
-                    />
-                  ),
-                  code: ({ node, ...props }) => (
-                    <code
-                      {...props}
-                      // @ts-ignore (to fix "Received `true` for a non-boolean attribute `inline`." warning)
-                      inline="true"
-                      className="rounded-sm bg-gray-100 px-1 py-0.5 font-mono font-medium text-gray-800"
-                    />
-                  ),
-                }}
-              >
-                {description}
-              </ReactMarkdown>
-            </div>
-          </div> */}
         </div>
       </div>
+
+      <VocabularyList />
 
       {/* old blocks */}
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
