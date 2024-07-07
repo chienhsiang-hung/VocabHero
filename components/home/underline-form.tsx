@@ -27,9 +27,9 @@ export default function UnderlineForm() {
 
         const data_tmp = await dictionaryApi(event);
         if (data_tmp !== undefined) {
-            setData(data_tmp);
+            setData(data_tmp.text_area);
         };
-        console.log(data);
+        console.log(data, data_tmp?.audio);
     }
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setData(event.target.value);

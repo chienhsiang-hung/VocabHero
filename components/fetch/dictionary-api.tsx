@@ -3,6 +3,7 @@ export const dictionaryApi = async (event: React.ChangeEvent<HTMLInputElement>) 
         const response = await fetch( 'https://api.dictionaryapi.dev/api/v2/entries/en/' + event.target.value );
         const jsonData = await response.json();
         const meanings = await jsonData[0].meanings;
+        const audio = await jsonData[0].phonetics[0].audio
 
         let text_area = '';
         meanings.forEach(function(meaning: { partOfSpeech: any; definitions: any;}) {
@@ -16,7 +17,7 @@ export const dictionaryApi = async (event: React.ChangeEvent<HTMLInputElement>) 
 
         console.log(text_area);
         // return ({jsonData: jsonData[0], text_area: text_area});
-        return (text_area);
+        return ({'text_area': text_area, 'audio': audio});
       } catch (error) {
         console.error('Error fetching data:', error);
     };
